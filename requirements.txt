@@ -1,0 +1,4 @@
+# Versions used for the data and figures of this repository, with Python 3.12.7.
+numpy==1.26.4
+scipy==1.13.1
+matplotlib==3.9.2

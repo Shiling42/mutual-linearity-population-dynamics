@@ -1,0 +1,4 @@
+max |<x> - x*(theta)| over the nine values of theta: 6.5e-05
+Hopf bifurcation at theta = -0.3738
+saved figures/fig3.pdf
+regimes: [(-0.45, 'fixed point', -0.0091), (-0.38, 'fixed point', -0.0006), (-0.3, 'limit cycle', 0.0003), (-0.2, 'limit cycle', 0.0003), (-0.1, 'limit cycle', -0.0009), (0.0, 'chaos', 0.0195), (0.08, 'chaos', 0.0237), (0.15, 'chaos', 0.0031), (0.2, 'chaos', 0.0156)]

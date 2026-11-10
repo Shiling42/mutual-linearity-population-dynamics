@@ -1,0 +1,19 @@
+example: compositions along the sweep (1 = present):
+   theta in [-0.600,-0.290]  species present (1, 0, 1, 1, 1, 0)  rank of (x,1) = 1  third singular value / first = 2.6e-31
+   theta in [-0.280,-0.010]  species present (1, 1, 1, 1, 1, 0)  rank of (x,1) = 2  third singular value / first = 1.2e-16
+   theta in [0.000,0.220]  species present (1, 1, 1, 1, 1, 1)  rank of (x,1) = 2  third singular value / first = 1.3e-16
+   theta in [0.230,1.900]  species present (1, 1, 1, 0, 1, 1)  rank of (x,1) = 2  third singular value / first = 2.4e-16
+   theta in [1.910,3.000]  species present (1, 1, 1, 0, 0, 1)  rank of (x,1) = 2  third singular value / first = 1.3e-16
+   change at theta=-0.280: species [2] invade
+   change at theta=0.000: species [6] invade
+   change at theta=0.230: species 4 lost; direction after the kink, Eq. (7) against observed: 1 - |cos| = 0.0e+00
+   change at theta=1.910: species 5 lost; direction after the kink, Eq. (7) against observed: 1 - |cos| = 0.0e+00
+   grid points with more than one saturated equilibrium: 0 of 361
+
+random communities (n=5 and 8): 120 sweeps of theta in [-3,3], of which 93 have a saturated equilibrium at every step
+   changes of composition per sweep in these 93: mean 1.81, max 5, fraction with >=1: 0.925, with >=2: 0.581
+   losses of a single species with k and l still present: 68, of which 67 are followed by a branch of at least three grid points
+   direction after these 67 kinks, Eq. (7) against observed: largest 1 - |cos| = 2.2e-16
+   branches on which the control has no effect (k or l absent): 0
+   grid points of all 120 sweeps: 14520; with one saturated equilibrium: 13939; with none: 581; with more than one: 0
+saved data/exp_stepwise_example.npz and data/exp_stepwise_stats.npz

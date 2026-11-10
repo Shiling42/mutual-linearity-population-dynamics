@@ -1,0 +1,4 @@
+bands of panel (c): escapes begin at theta = 0.18; all trajectories escape from theta = 0.25
+saved figures/figS3_chaos.pdf and figures/figS3_chaos.png
+regimes: −0.45: fixed point, −0.38: fixed point, −0.30: limit cycle, −0.20: limit cycle, −0.10: limit cycle, +0.00: chaos, +0.08: chaos, +0.15: chaos, +0.20: chaos
+Hopf at theta = -0.3738; zoom magnification in B: x3.08; max |<x> - x*(theta)| = 6.5e-05

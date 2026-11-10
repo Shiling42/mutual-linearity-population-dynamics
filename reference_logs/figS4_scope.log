@@ -1,0 +1,8 @@
+saved figures/figS4_scope.pdf and figures/figS4_scope.png
+B: ranks of (x, 1) for 1, 2, 3 modified equations: [2, 3, 4] (draws that keep all seven species: [299, 160, 173] of 300); rate shared by two equations: 3
+   1 equation(s): sv = [1.00e+00 1.37e-01 5.19e-16 1.78e-16 6.27e-17 4.12e-17 2.21e-17 1.34e-17]
+   2 equation(s): sv = [1.00e+00 1.39e-01 1.35e-01 2.05e-16 9.55e-17 6.28e-17 4.23e-17 3.23e-17]
+   3 equation(s): sv = [1.00e+00 1.55e-01 1.33e-01 1.06e-01 1.97e-16 6.28e-17 5.06e-17 2.32e-17]
+   shared rate:    sv = [1.00e+00 7.10e-02 3.76e-04 2.47e-16 1.24e-16 3.81e-17 3.02e-17 2.26e-17]
+C: consumer-resource, mortality of consumer 1: rank (y, 1) = 2, sv = [1.00e+00 9.03e-02 2.40e-16 1.41e-16 7.01e-17 5.59e-17 4.32e-17 2.18e-17]
+D: replicator, one payoff entry: rank = 2, sv = [1.00e+00 8.10e-02 1.06e-16 1.47e-17]

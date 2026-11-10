@@ -1,0 +1,14 @@
+% Generic assembly of a PRL figure: places the matplotlib data panels (build/<name>_panels.pdf, with an empty slot)
+% and a TikZ sketch (build/<name>_sketch.pdf) at the slot position. The figure script writes prl_assemble_layout.tex
+% (\figW, \figH in inches; \slotX, \slotY = lower-left corner of the slot in inches; \panels, \sketch = file names)
+% and runs: pdflatex -output-directory=<build> prl_assemble.tex
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage{graphicx}
+\begin{document}
+\input{prl_assemble_layout.tex}%
+\begin{tikzpicture}[x=1in, y=1in]
+\useasboundingbox (0,0) rectangle (\figW,\figH);
+\node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics{\panels}};
+\node[anchor=south west, inner sep=0pt] at (\slotX,\slotY) {\includegraphics{\sketch}};
+\end{tikzpicture}
+\end{document}

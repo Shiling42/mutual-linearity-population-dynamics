@@ -1,0 +1,14 @@
+% Assembly of Fig. S4 (one PDF, exactly 7.0 in wide). Built by figS4_scope.py:
+%   pdflatex -output-directory=build_figS4 figS4_assemble.tex   (run in figure_scripts/)
+% Places the matplotlib data panels (build_figS4/figS4_panels.pdf, slot of panel (a) left empty) and the TikZ sketch
+% of panel (a) (build_figS4/figS4_sketch.pdf) at the slot position written by figS4_scope.py into figS4_layout.tex.
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage{graphicx}
+\begin{document}
+\input{figS4_layout.tex}%
+\begin{tikzpicture}[x=1in, y=1in]
+\useasboundingbox (0,0) rectangle (\figW,\figH);
+\node[anchor=south west, inner sep=0pt] at (0,0) {\includegraphics{build_figS4/figS4_panels.pdf}};
+\node[anchor=south west, inner sep=0pt] at (\slotX,\slotY) {\includegraphics{build_figS4/figS4_sketch.pdf}};
+\end{tikzpicture}
+\end{document}

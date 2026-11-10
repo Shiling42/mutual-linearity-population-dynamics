@@ -1,0 +1,11 @@
+theta=-0.45: fixed point  Re(eig)max=-0.0092, Lyapunov=-0.0091, smallest abundance on the attractor=1.3e-01 (in the averaging window: 1.3e-01; species 3: 1.3e-01), max|<x>-x*|=3.4e-13, x*=[0.3109 0.5094 0.1251 0.3203]
+theta=-0.38: fixed point  Re(eig)max=-0.0007, Lyapunov=-0.0006, smallest abundance on the attractor=1.3e-01 (in the averaging window: 1.2e-01; species 3: 1.2e-01), max|<x>-x*|=2.6e-07, x*=[0.3094 0.5018 0.126  0.3256]
+theta=-0.30: limit cycle  Re(eig)max=+0.0087, Lyapunov=+0.0003, smallest abundance on the attractor=5.3e-02 (in the averaging window: 5.3e-02; species 3: 5.3e-02), max|<x>-x*|=6.2e-06, x*=[0.3078 0.493  0.127  0.3317]
+theta=-0.20: limit cycle  Re(eig)max=+0.0200, Lyapunov=+0.0003, smallest abundance on the attractor=2.8e-02 (in the averaging window: 2.8e-02; species 3: 2.8e-02), max|<x>-x*|=1.2e-06, x*=[0.3057 0.4817 0.1282 0.3396]
+theta=-0.10: limit cycle  Re(eig)max=+0.0310, Lyapunov=-0.0009, smallest abundance on the attractor=1.2e-02 (in the averaging window: 1.2e-02; species 3: 1.2e-02), max|<x>-x*|=5.2e-05, x*=[0.3035 0.4703 0.1295 0.3476]
+theta=+0.00: chaos        Re(eig)max=+0.0414, Lyapunov=+0.0195, smallest abundance on the attractor=2.0e-03 (in the averaging window: 2.0e-03; species 3: 2.0e-03), max|<x>-x*|=2.0e-05, x*=[0.3013 0.4587 0.1308 0.3557]
+theta=+0.08: chaos        Re(eig)max=+0.0495, Lyapunov=+0.0237, smallest abundance on the attractor=1.0e-04 (in the averaging window: 1.0e-04; species 3: 1.0e-04), max|<x>-x*|=1.3e-05, x*=[0.2995 0.4492 0.1318 0.3624]
+theta=+0.15: chaos        Re(eig)max=+0.0564, Lyapunov=+0.0031, smallest abundance on the attractor=3.2e-08 (in the averaging window: 3.2e-08; species 3: 3.2e-08), max|<x>-x*|=1.1e-05, x*=[0.2979 0.4407 0.1328 0.3683]
+theta=+0.20: chaos        Re(eig)max=+0.0612, Lyapunov=+0.0156, smallest abundance on the attractor=1.1e-08 (in the averaging window: 1.1e-08; species 3: 1.1e-08), max|<x>-x*|=6.5e-05, x*=[0.2968 0.4346 0.1334 0.3726]
+max deviation of the interior equilibria x*(theta) from the line of Eqs. (4) and (6): 8.9e-16
+saved data/exp_chaos.npz

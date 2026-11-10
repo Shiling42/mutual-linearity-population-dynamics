@@ -1,0 +1,71 @@
+% Panel (c) of PRL Fig. 2 (TikZ): the geometry of a kink, Eq. (7) of the paper. Built by prl_fig2.py (needs the
+% generated prl_fig2_layout.tex). Abundance space with x_e (the species that is lost) vertical; the horizontal plane
+% x_e = 0 is where e is absent. The equilibrium comes down the old line (direction b_k) and reaches the plane at the
+% kink (white circle, as in panel b). Continuing along b_k would make x_e negative (dashed); the new line stays in
+% the plane, in the direction b_k' = b_k - (B_ek/B_ee) b_e: the tip of b_k is moved along b_e (the press response of
+% the lost species) until it reaches the plane. The drawn vectors satisfy Eq. (7) exactly; grey arrow = predicted
+% new direction, the same encoding as in panel (b).
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[helvet]{sfmath}
+\usetikzlibrary{arrows.meta,calc}
+\definecolor{oipink}{HTML}{CC79A7}
+\colorlet{predgrey}{black!32}
+\colorlet{planefill}{black!10}
+\colorlet{planeedge}{black!40}
+\begin{document}
+\fontsize{7.5}{9}\selectfont
+\input{prl_fig2_layout.tex}%
+\begin{tikzpicture}[x=1cm, y=1cm,
+  tip/.style={-{Stealth[length=2.6pt 1.6, width=2.3pt 1.6]}},
+  lab/.style={inner sep=1pt, font=\fontsize{7.5}{8.8}\selectfont},
+  ]
+\useasboundingbox (0,0) rectangle (\slotW,\slotH);
+\def\sc{1.00}
+% 3D points (u, v, w): u, v = two other abundances (in the plane x_e = 0), w = x_e (vertical); cabinet projection
+\begin{scope}[shift={(0.54,2.03)}, x={(\sc*1cm,0cm)}, y={(\sc*0.30cm,\sc*0.33cm)}, z={(0cm,\sc*1.52cm)}]
+  \coordinate (O) at (0,0,0);
+  \coordinate (K) at (1.25,0.60,0);                 % kink: the old line reaches x_e = 0
+  \coordinate (P) at ($(K)+(0.45,-0.03,-0.95)$);    % K + b_k, e-component B_ek = -0.95 (direction of travel)
+  \coordinate (S) at ($(K)+(-0.711,0.0474,1.501)$); % a point of the old branch (x_e > 0): K - 1.58 b_k
+  \coordinate (R) at ($(K)+(0.24,0.36,0.65)$);      % K + b_e, e-component B_ee = +0.65 > 0 (as for a P-matrix -A)
+  \coordinate (Q) at ($(P)+(0.350769,0.526154,0.95)$); % P - (B_ek/B_ee) b_e = K + b_k'  (on the plane)
+  % ---- below the plane
+  \draw[black!55, line width=0.6pt, dash pattern=on 1.6pt off 1.3pt] (P) -- ($(K)!1.38!(P)$);
+  \draw[oipink, line width=0.8pt, dash pattern=on 2.2pt off 1.2pt, tip] (P) -- (Q);
+  \draw[black, line width=0.8pt, tip] (K) -- (P);
+  % ---- the plane x_e = 0
+  \fill[planefill, fill opacity=0.7] (0,0,0) -- (2.85,0,0) -- (2.85,2.75,0) -- (0,2.75,0) -- cycle;
+  \draw[planeedge, line width=0.5pt] (2.85,0,0) -- (2.85,2.75,0) -- (0,2.75,0);
+  \draw[black, line width=0.5pt, tip] (O) -- (3.12,0,0) node[lab, anchor=west, xshift=0.5pt] {$x_i$};
+  \draw[black, line width=0.5pt, tip] (O) -- (0,3.1,0) node[lab, anchor=south east] {$x_j$};
+  \draw[black, line width=0.5pt, tip] (O) -- (0,0,2.05) node[lab, anchor=south] {$x_e$};
+  \node[lab, text=black!62, anchor=south west] at (0.25,0.10,0) {$x_e=0$};
+  % ---- new line in the plane (grey arrow: predicted direction)
+  \draw[predgrey, line width=2.4pt, -{Stealth[length=4.8pt, width=5.0pt]}] (K) -- ($(K)!0.97!(Q)$);
+  \draw[black, line width=0.9pt] (K) -- ($(K)!1.60!(Q)$);
+  % ---- press response of the lost species (above the plane, parallel to the correction P -> Q)
+  \draw[oipink, line width=0.9pt, tip] (K) -- (R);
+  % ---- old line above the plane
+  \draw[black, line width=0.9pt] (S) -- (K);
+  \draw[black, line width=0.9pt, tip] (S) -- ($(S)!0.5!(K)$);
+  \fill[white] (K) circle (1.9pt); \draw[black, line width=0.6pt] (K) circle (1.9pt);
+  % ---- labels
+  \node[lab, anchor=west] at ($(S)!0.22!(K)+(0.10,0,0)$) {old line};
+  \node[lab, anchor=west, inner sep=1.5pt] at ($(K)!1.60!(Q)$) {new line};
+  \node[lab, anchor=south, inner sep=1.2pt] at ($(K)!0.62!(Q)+(0,0.08,0.02)$) {$\mathbf{b}_k'$};
+  \node[lab, anchor=east] at ($(K)!0.62!(P)+(-0.04,0,0)$) {$\mathbf{b}_k$};
+  \node[lab, anchor=south west, text=oipink, inner sep=0.5pt] at (R) {$\mathbf{b}_e$};
+  \node[lab, anchor=west, text=oipink, inner sep=0.5pt] at ($(P)!0.42!(Q)+(0.05,0,0)$)
+       {$-(B_{ek}/B_{ee})\,\mathbf{b}_e$};
+  \node[lab, anchor=west, text=black!60] at ($(K)!1.38!(P)+(0.06,0,0.05)$) {$x_e<0$};
+\end{scope}
+% ------------------------------------------------------------------ equation and gloss (upper right)
+\node[lab, anchor=north east] (eq) at (\slotW-0.04,\slotH-0.10) {%
+  $\displaystyle\mathbf{b}_k'=\mathbf{b}_k-\frac{B_{ek}}{B_{ee}}\,\mathbf{b}_e$};
+\node[lab, anchor=north east, align=right, text=black!65, font=\fontsize{6.8}{7.8}\selectfont] at ($(eq.south east)+(0,-0.03)$)
+  {press on $k$ with\\species $e$ clamped at 0};
+\end{tikzpicture}
+\end{document}

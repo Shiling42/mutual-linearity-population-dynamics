@@ -1,0 +1,118 @@
+% Panel (a) of Fig. S4 (TikZ): one dimension per modified equation.
+% Built by figS4_scope.py (needs the generated figS4_layout.tex):
+%   pdflatex -output-directory=build_figS4 figS4_sketch.tex      (run in figure_scripts/)
+% Four vignettes, each a system of seven equations (bars; the modified ones coloured) -> the set of equilibria in a
+% small 3D abundance frame, through the unperturbed equilibrium x*_0 (star, as in panels c and d):
+%   rows 1        -> line   (blue,      circles in b, rank 2)   rows as in the data: species 1; 1, 4; 1, 4, 6
+%   rows 1, 4     -> plane  (vermilion, circles in b, rank 3)
+%   rows 1, 4, 6  -> 3-D    (green,     circles in b, rank 4)
+%   one rate u_11 in rows 1 and 5 (resource 1, consumer 1 of the consumer-resource model) -> plane (pink, squares, rank 3)
+% Colours are figstyle.C[0..3], the colours of the four spectra of panel (b); marker glyphs as in (b).
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[helvet]{sfmath}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing,shapes.geometric}
+\definecolor{oiblue}{HTML}{0072B2}
+\definecolor{oiverm}{HTML}{D55E00}
+\definecolor{oigreen}{HTML}{009E73}
+\definecolor{oipink}{HTML}{CC79A7}
+\colorlet{eqgrey}{black!15}
+\colorlet{axgrey}{black!38}
+\begin{document}
+\fontsize{7}{8.4}\selectfont
+\input{figS4_layout.tex}%
+% vertical layout, tied to the slot height (cm): label baseline, stack centre, arrow tip; frames sit at the bottom
+\pgfmathsetmacro{\yt}{\slotH-0.31}
+\pgfmathsetmacro{\ys}{\slotH-0.90}
+\pgfmathsetmacro{\ya}{\slotH-1.70}
+\def\yf{0.40}%  origin of the 3D frames
+\def\yb{0.11}%  baseline of the labels under the frames
+\def\bs{0.100}% row spacing of the equation stack
+\def\bw{0.29}%  half-width of an equation bar
+\begin{tikzpicture}[x=1cm, y=1cm,
+  tip/.style={-{Stealth[length=2.6pt, width=2.4pt]}},
+  lab/.style={inner sep=1pt, font=\fontsize{7}{8.2}\selectfont},
+  ]
+\useasboundingbox (0,0) rectangle (\slotW,\slotH);
+% ---------------------------------------------------------------- helpers
+% equation stack: seven bars (one per equation), the modified ones coloured
+\newcommand{\eqstack}[3]{% #1 centre x, #2 modified rows, #3 colour
+  \foreach \r in {1,...,7} {\draw[eqgrey, line width=1.6pt, line cap=round] ({#1-\bw},{\ys-(\r-4)*\bs}) -- ({#1+\bw},{\ys-(\r-4)*\bs});}
+  \foreach \r in {#2} {\draw[#3, line width=1.6pt, line cap=round] ({#1-\bw},{\ys-(\r-4)*\bs}) -- ({#1+\bw},{\ys-(\r-4)*\bs});}
+  \draw[black!70, line width=0.5pt, decorate, decoration={brace, amplitude=1.8pt, mirror}]
+     ({#1-\bw-0.10},{\ys+3*\bs+0.06}) -- ({#1-\bw-0.10},{\ys-3*\bs-0.06});
+}
+% arrow from the stack to the geometry
+\newcommand{\down}[1]{\draw[black!70, line width=0.6pt, tip] (#1,{\ys-3*\bs-0.14}) -- (#1,\ya);}
+% 3D frame (cabinet projection): three axes from the origin
+\newcommand{\frameaxes}{%
+  \draw[axgrey, line width=0.5pt, -{Stealth[length=1.9pt, width=1.8pt]}] (0,0,0) -- (1.08,0,0);
+  \draw[axgrey, line width=0.5pt, -{Stealth[length=1.9pt, width=1.8pt]}] (0,0,0) -- (0,1.12,0);
+  \draw[axgrey, line width=0.5pt, -{Stealth[length=1.9pt, width=1.8pt]}] (0,0,0) -- (0,0,1.0);
+}
+\tikzset{cab/.style={x={(1.06cm,0cm)}, y={(0.42cm,0.28cm)}, z={(0cm,1.06cm)}}}
+% unperturbed equilibrium: black star with a thin white rim, as in panels (c) and (d)
+\newcommand{\ustar}[1]{\node[star, star points=5, star point ratio=2.4, fill=black, draw=white, line width=0.5pt,
+  inner sep=0pt, minimum size=5.2pt] at #1 {};}
+% ---------------------------------------------------------------- vignette centres
+\def\ca{1.00}\def\cb{3.00}\def\cc{5.00}\def\cd{7.08}
+% ---------------------------------------------------------------- 1 equation -> line
+\eqstack{\ca}{1}{oiblue}
+\down{\ca}
+\begin{scope}[shift={(\ca-0.70,\yf)}, cab]
+  \frameaxes
+  \draw[oiblue, line width=1.25pt, line cap=round] (0.16,0.22,0.26) -- (0.94,0.82,0.86);
+  \ustar{(0.55,0.52,0.56)}
+  \node[lab, anchor=south east, inner sep=0.5pt] at ($(0.55,0.52,0.56)+(-0.035,0,0.035)$) {$\mathbf{x}^{\ast}_0$};
+\end{scope}
+% ---------------------------------------------------------------- 2 equations -> plane
+\eqstack{\cb}{1,4}{oiverm}
+\down{\cb}
+\begin{scope}[shift={(\cb-0.70,\yf)}, cab]
+  \frameaxes
+  \filldraw[fill=oiverm, fill opacity=0.22, draw=oiverm, line width=0.6pt, line join=round]
+    (0.10,0.10,0.30) -- (0.95,0.10,0.10) -- (0.95,0.95,0.55) -- (0.10,0.95,0.75) -- cycle;
+  \ustar{(0.525,0.525,0.425)}
+\end{scope}
+% ---------------------------------------------------------------- 3 equations -> 3-D
+\eqstack{\cc}{1,4,6}{oigreen}
+\down{\cc}
+\begin{scope}[shift={(\cc-0.70,\yf)}, cab]
+  \frameaxes
+  \coordinate (o) at (0.24,0.12,0.22);
+  % visible faces: front (u,w), right (v,w), top (u,v)
+  \filldraw[fill=oigreen, fill opacity=0.26, draw=oigreen, line width=0.6pt, line join=round]
+    (o) -- ++(0.62,0,0) -- ++(0,0,0.62) -- ++(-0.62,0,0) -- cycle;
+  \filldraw[fill=oigreen, fill opacity=0.16, draw=oigreen, line width=0.6pt, line join=round]
+    ($(o)+(0.62,0,0)$) -- ++(0,0.62,0) -- ++(0,0,0.62) -- ++(0,-0.62,0) -- cycle;
+  \filldraw[fill=oigreen, fill opacity=0.10, draw=oigreen, line width=0.6pt, line join=round]
+    ($(o)+(0,0,0.62)$) -- ++(0.62,0,0) -- ++(0,0.62,0) -- ++(-0.62,0,0) -- cycle;
+  \ustar{($(o)+(0.31,0.31,0.31)$)}
+\end{scope}
+% ---------------------------------------------------------------- 1 rate shared by 2 equations -> plane
+\eqstack{\cd}{1,5}{oipink}
+\down{\cd}
+% one consumption rate, u_11, enters two equations: the resource's (row 1, R_1) and the consumer's (row 5, N_1)
+\node[lab, text=oipink, anchor=west] (u) at ({\cd+\bw+0.36},{\ys+\bs}) {$u_{11}$};
+\draw[oipink, line width=0.55pt] (u.west) -- ({\cd+\bw+0.09},{\ys+3*\bs});
+\draw[oipink, line width=0.55pt] (u.west) -- ({\cd+\bw+0.09},{\ys-\bs});
+\begin{scope}[shift={(\cd-0.70,\yf)}, cab]
+  \frameaxes
+  \filldraw[fill=oipink, fill opacity=0.22, draw=oipink, line width=0.6pt, line join=round]
+    (0.10,0.30,0.30) -- (0.92,0.05,0.42) -- (0.92,0.80,0.92) -- (0.10,1.05,0.80) -- cycle;
+  \ustar{(0.51,0.55,0.61)}
+\end{scope}
+% ---------------------------------------------------------------- labels (marker glyphs as in panel b)
+\foreach \cx/\col/\txt in {\ca/oiblue/1 equation, \cb/oiverm/2 equations, \cc/oigreen/3 equations} {
+  \node[lab, anchor=base] (t) at (\cx+0.06,\yt) {\txt};
+  \fill[\col] ($(t.base west)+(-0.07,0.085)$) circle (1.55pt);
+}
+\node[lab, anchor=base] (t4) at (\cd+0.12,\yt) {1 rate, 2 equations};
+\fill[oipink] ($(t4.base west)+(-0.12,0.03)$) rectangle +(2.8pt,2.8pt);
+\foreach \cx/\txt in {\ca/line, \cb/plane, \cc/3-D, \cd/plane} {
+  \node[lab, anchor=base] at (\cx,\yb) {\txt};
+}
+\end{tikzpicture}
+\end{document}

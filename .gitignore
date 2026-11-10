@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.DS_Store
+# output of run_all.py (reference_logs/ holds the logs of the run that produced data/ and figures/)
+logs/
+# intermediate files written by the figure scripts
+figure_scripts/build_fig1/
+figure_scripts/build_fig2/
+figure_scripts/build_figS4/
+figure_scripts/prl_assemble_layout.tex
+figure_scripts/prl_fig1_edges.tex
+figure_scripts/prl_fig1_layout.tex
+figure_scripts/prl_fig2_layout.tex
+figure_scripts/figS4_layout.tex

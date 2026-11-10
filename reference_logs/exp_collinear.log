@@ -1,0 +1,22 @@
+community: r = [1.062 0.9   1.113 0.697 0.68 ] 
+A =
+ [[-1.    -0.117  0.355  0.234  0.037]
+ [ 0.27  -1.     0.411 -0.386 -0.672]
+ [ 0.111  0.282 -1.    -0.433  0.011]
+ [-0.021  0.566  0.301 -1.     0.447]
+ [-0.083 -0.373  0.235  0.234 -1.   ]] 
+x0 = [1.677 0.448 0.762 1.555 0.918] 
+column k of A^-1 (= -b_k) = [-0.414 -0.156 -0.898 -0.45  -0.224]
+press r_3             : 81 equilibria with all species present (of 81 grid points; at 0 there is no saturated equilibrium, at 0 a species is absent); largest distance from the line x0 + s b_k = 8.1e-16 (largest component 5.9e-16); max |s - s of Eq. (3)| = 3.9e-16; s range [-0.350,0.350]; grid points with more than one saturated equilibrium: 0 of 81
+self-regulation A_33  : 76 equilibria with all species present (of 81 grid points; at 5 there is no saturated equilibrium, at 0 a species is absent); largest distance from the line x0 + s b_k = 4.0e-15 (largest component 3.6e-15); max |s - s of Eq. (3)| = 3.6e-15; s range [-0.263,45.582]; grid points with more than one saturated equilibrium: 0 of 81
+interaction A_31      : 66 equilibria with all species present (of 81 grid points; at 0 there is no saturated equilibrium, at 15 a species is absent); largest distance from the line x0 + s b_k = 1.6e-15 (largest component 1.1e-15); max |s - s of Eq. (3)| = 6.7e-16; s range [-0.833,2.861]; grid points with more than one saturated equilibrium: 0 of 81
+mixed                 : 81 equilibria with all species present (of 81 grid points; at 0 there is no saturated equilibrium, at 0 a species is absent); largest distance from the line x0 + s b_k = 8.8e-16 (largest component 5.6e-16); max |s - s of Eq. (3)| = 6.7e-16; s range [-0.017,1.612]; grid points with more than one saturated equilibrium: 0 of 81
+all 304 equilibria of the four modifications: rank of (x, 1) = 2; singular values: [1.00e+00 2.88e-01 4.83e-16 4.94e-17 3.53e-17 2.25e-17]
+type II, press r_3             : 81 equilibria, max residual of the unmodified equations = 3.3e-16, deviation from a straight line (relative second singular value of the centered data) = 1.37e-02
+type II, self-regulation A_33  : 81 equilibria, max residual of the unmodified equations = 4.4e-16, deviation from a straight line (relative second singular value of the centered data) = 2.27e-02
+type II, interaction A_31      : 73 equilibria, max residual of the unmodified equations = 6.7e-16, deviation from a straight line (relative second singular value of the centered data) = 7.08e-02
+type II, mixed                 : 81 equilibria, max residual of the unmodified equations = 6.7e-16, deviation from a straight line (relative second singular value of the centered data) = 2.57e-02
+   self-regulation A_33  : max deviation from the curve of the press (interpolated in x_k) = 3.4e-06 over 64 equilibria
+   interaction A_31      : max deviation from the curve of the press (interpolated in x_k) = 3.3e-06 over 18 equilibria
+   mixed                 : max deviation from the curve of the press (interpolated in x_k) = 3.5e-06 over 46 equilibria
+saved data/exp_collinear.npz

@@ -1,0 +1,7 @@
+(c) press $r_2$: 60 of 60 values of theta have a saturated equilibrium and are drawn
+(c) self-regulation $A_{22}$: 53 of 120 values of theta have a saturated equilibrium and are drawn
+(c) interaction $A_{23}$: 361 of 361 values of theta have a saturated equilibrium and are drawn
+(c) interaction $A_{21}$: 89 of 120 values of theta have a saturated equilibrium and are drawn
+(c) mixed: 109 of 120 values of theta have a saturated equilibrium and are drawn
+(c) max |x*(theta) - x*_press(s(theta))| over all five modifications = 5.7e-14
+saved figures/figS1.pdf

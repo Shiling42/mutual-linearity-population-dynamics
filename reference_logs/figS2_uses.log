@@ -1,0 +1,8 @@
+saved figures/figS2_uses.pdf and figures/figS2_uses.png
+A: two measurements at theta = 0.28, 0.48; max prediction error on the branch 1.3e-15
+C: pole (asymptote) at theta = -0.9853; species 2 reaches zero at theta = -0.2877; branch ends at theta = -0.0067 (sp. 6 invades); x*(theta) of the branch against the data: 1.8e-15
+D: slopes (interaction sweep) = [ 1.5146 -0.5697 -1.2208  1.4607] ; press ratios = [ 1.5146 -0.5697 -1.2208  1.4607] ; max difference = 2.9e-15
+  change at theta = -0.2877: sp. 2 invades; kink at (x1, x3) = (0.6279, 3.6241)
+  change at theta = -0.0067: sp. 6 invades; kink at (x1, x3) = (1.0219, 2.5834)
+  change at theta = +0.2205: sp. 4 lost; kink at (x1, x3) = (1.0611, 1.4328)
+  change at theta = +1.9007: sp. 5 lost; kink at (x1, x3) = (2.1993, 0.7843)
