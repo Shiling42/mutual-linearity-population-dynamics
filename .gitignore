@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 .DS_Store
-# output of run_all.py (reference_logs/ holds the logs of the run that produced data/ and figures/)
+# output of run_all.py (reference_logs/ holds the logs of a complete reference run)
 logs/
 # intermediate files written by the figure scripts
 figure_scripts/build_fig1/

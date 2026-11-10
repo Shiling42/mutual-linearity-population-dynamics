@@ -15,7 +15,7 @@ Material (SM), the data and figures it produced, and a script that checks every 
 | `figures/` | The seven figures as PDF, each with a PNG for checking. |
 | `verify_sm_numbers.py` | Prints every number quoted in the SM and in the figure captions next to the value found from the code and the data, with a PASS or FAIL mark. |
 | `run_all.py` | Runs all experiments, all figure scripts and the check, in order. |
-| `reference_logs/` | Printed output and run times of the run that produced `data/` and `figures/`. |
+| `reference_logs/` | Printed output and run times of a complete run of this version. That run reproduced `data/` bit for bit and `figures/` pixel for pixel. |
 | `requirements.txt`, `LICENSE` | Package versions; license. |
 
 ## Requirements

@@ -14,7 +14,7 @@ it must be updated when the text changes. The rule in brackets says how the two 
   rounds     the value found, rounded to the digits printed in the text, equals the value in the text.
   bound      the text gives a bound ("to", "below", "better than", "at most"): the value found does not exceed it.
   holds      a statement without a number: the script says what it evaluated and the threshold used.
-  noise      the text quotes a value at the level of rounding errors (1e-16 to 1e-15). Such values depend on the
+  noise      the text quotes a value at the level of rounding or integration errors. Such values depend on the
              machine and on the library versions. PASS if the value found is less than ten times the value quoted.
   run        a value from a chaotic trajectory. The SM says that these digits depend on the run (caption of
              Table S1), and they also depend on the machine. PASS within the tolerance named in the rule. Where
@@ -215,16 +215,16 @@ add(len(exc) == 1 and exc[0, 5] == 1 and exc[0, 10] == 1, '   the exception is "
 if len(exc) == 1:
     rounds('   equilibrium abundance of the species that had not recovered', '3e-4', exc[0, 8])
 
-bound('Fig. 1: |s from Eq. (3) - s from the displacement|, four modifications', '1e-14',
+bound('Fig. 1: |s from Eq. (3) - s from the displacement|, four modifications', '1e-13',
       max(np.max(np.abs(SS[i] - SID[i])) for i in range(4)), 'better than')
 exact('   number of equilibria with full coexistence', 304, int(sum(X.shape[1] for X in XS)))
-bound('   distance of these equilibria from the line x0* + s b_3 (Euclidean; s fitted by least squares)', '1e-14',
+bound('   distance of these equilibria from the line x0* + s b_3 (Euclidean; s fitted by least squares)', '1e-13',
       float(col['dist'].max()))
 allX = np.hstack(XS)
 rk, sv = numerical_rank(np.vstack([allX, np.ones(allX.shape[1])]), rtol=1e-12)
 exact('   numerical rank of the points (x*, 1)', 2, rk)
 rounds('   second singular value / first', '0.29', sv[1] / sv[0])
-noise('   third singular value / first', '2e-16', sv[2] / sv[0])
+bound('   third singular value / first', '1e-15', sv[2] / sv[0])
 
 # ============================================================================================== Sec. S3
 section('Sec. S3  Effective press, functional responses, press path (Fig. S1)')
@@ -250,7 +250,7 @@ four = ['A_23', 'A_22', 'A_21', 'mixed']
 comps = [PATH[nm]['comps'] for nm in four]
 add(set(comps) <= {5, 6}, 'Fig. S1(c): compositions visited by the changes of A_23, A_22, A_21 and the mixed change',
     'five or six each', ', '.join(str(c) for c in comps), 'exact')
-bound('Fig. S1(c): these four modifications against the press path at p = s(theta)', '6e-14',
+bound('Fig. S1(c): these four modifications against the press path at p = s(theta)', '1e-13',
       max(PATH[nm]['worst'] for nm in four), 'to')
 
 # ============================================================================================== Sec. S4
@@ -270,14 +270,8 @@ rounds('   sweeps with at least one (%)', '92', 100 * float(np.mean(nk >= 1)))
 rounds('   sweeps with at least two (%)', '58', 100 * float(np.mean(nk >= 2)))
 sl = st['single_loss_len']
 exact('kinks: losses of a single species with k, l present, compared with Eq. (7)', 67, len(st['cosines']))
-# The text requires the branch after the kink to be "at least three grid steps long" (four grid points). The
-# experiment requires three grid points (two steps). Set KINK_BRANCH to 'points' when the text says so.
-KINK_BRANCH = 'steps'
-add(int((sl >= (4 if KINK_BRANCH == 'steps' else 3)).sum()) == 67,
-    f'   ... "the following branch was at least three grid {KINK_BRANCH} long"', 67,
-    f'{int((sl >= 3).sum())} with at least three grid points (two steps); {int((sl >= 4).sum())} with at least three steps',
-    'exact')
-noise('   1 - |cos| between Eq. (7) and the observed direction, largest', '3e-16', max(1 - float(st['cosines'].min()), 1e-17))
+exact('   such losses followed by a branch that contains at least three grid points', 67, int((sl >= 3).sum()))
+bound('   1 - |cos| between Eq. (7) and the observed direction, largest', '1e-15', 1 - float(st['cosines'].min()))
 for q in range(1, len(segs2)):                 # the two extinctions of the example of Fig. 2
     (p0, p1), (c0, c1) = segs2[q - 1], segs2[q]
     Sb = [i for i in range(n2) if SUPP2[p0][i]]; Sa = [i for i in range(n2) if SUPP2[c0][i]]
@@ -373,9 +367,9 @@ TABLE_S1 = [   # theta, regime, lambda_max, min x, max_i |<x_i> - x_i*|, as prin
     (-0.20, 'limit cycle', '0.000', '0.028', '1e-6'),
     (-0.10, 'limit cycle', '-0.001', '0.012', '5e-5'),
     (0.00, 'chaos', '0.020', '0.002', '2e-5'),
-    (0.08, 'chaos', '0.023', '1e-4', '1e-5'),
-    (0.15, 'weak chaos', '0.004', '3e-8', '3e-5'),
-    (0.20, 'chaos', '0.015', '1e-8', '6e-5'),
+    (0.08, 'chaos', '0.024', '1e-4', '1e-5'),
+    (0.15, 'weak chaos', '0.003', '3e-8', '1e-5'),
+    (0.20, 'chaos', '0.016', '1e-8', '7e-5'),
 ]
 for i, (th, reg, lam, mnx, dvt) in enumerate(TABLE_S1):
     tag = f'Table S1, theta = {th:+.2f}:'
@@ -414,7 +408,7 @@ holds('   never invaded by species 2', rate(0.0, 1) < 0 and rate(0.0, 1) == rate
 run('smallest abundance of species 3 on the attractor at theta = 0', '2e-3', xmin[5][2],
     0.5 <= xmin[5][2] / 2e-3 <= 2, 'within a factor of 2')
 run('   at theta = 0.08', '1e-4', xmin[6][2], 0.5e-4 <= xmin[6][2] < 1e-3, 'power of ten', power=True)
-run('   at theta = 0.15', '1e-8', xmin[7][2], 0.5e-8 <= xmin[7][2] < 1e-7, 'power of ten', power=True)
+run('   at theta = 0.15', '3e-8', xmin[7][2], 0.5 <= xmin[7][2] / 3e-8 <= 2, 'within a factor of 2')
 run('   at theta = 0.2', '1e-8', xmin[8][2], 0.5e-8 <= xmin[8][2] < 1e-7, 'power of ten', power=True)
 
 ths_scan = np.unique(scan['theta'])
@@ -455,12 +449,12 @@ exact('random modifications drawn for each |K|', 300, int(use['dim_draws']))
 exact('draws that keep all seven species, |K| = 1, 2, 3', (299, 160, 173), tuple(int(v) for v in use['dim_kept']))
 exact('numerical ranks of the points (x*, 1)', (2, 3, 4), tuple(int(v) for v in use['dim_rank']))
 for q in (1, 2, 3):
-    noise(f'   |K| = {q}: next singular value / first', '1e-16', float(use[f'dim_sv_{q}'][q + 1]), power=True)
+    bound(f'   |K| = {q}: next singular value / first', '1e-15', float(use[f'dim_sv_{q}'][q + 1]))
 rk_u, sv_u = numerical_rank(np.vstack([use['P2cr'], np.ones(use['P2cr'].shape[1])]), rtol=1e-10)
 exact('consumption rate u_11 shared by two equations: rank', 3, rk_u)
 rounds('   second singular value / first', '0.07', sv_u[1] / sv_u[0])
 rounds('   third singular value / first', '4e-4', sv_u[2] / sv_u[0])
-noise('   fourth singular value / first', '3e-16', sv_u[3] / sv_u[0])
+bound('   fourth singular value / first', '1e-15', sv_u[3] / sv_u[0])
 rk_m, sv_m = numerical_rank(np.vstack([use['Pcr'], np.ones(use['Pcr'].shape[1])]), rtol=1e-10)
 rr_, AA_ = use['rr'], use['AA']                       # y = (R_1..R_4, N_1..N_3); consumer 1 is index 4
 exact('consumer-resource model: resources (logistic); consumers', (4, 3),

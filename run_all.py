@@ -7,7 +7,8 @@ Run:  python3 -B run_all.py [workers]      all steps, about four minutes; worker
       python3 -B run_all.py figures        only the figures and the check, from the files already in data/
 
 The output of every step goes to logs/<step>.log, and the run times to logs/run_times.txt. The folder
-reference_logs/ holds the same files from the run that produced the data and figures stored here.
+reference_logs/ holds the same files from a complete run of this version, which reproduced the data and figures
+stored here.
 Exit status: 0 if every step ran without error and every check of verify_sm_numbers.py passed.
 """
 import os

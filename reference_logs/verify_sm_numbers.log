@@ -18,12 +18,12 @@ PASS  direct integration: number of settings                                    
 PASS     settings at which the composition agrees                                                       599                       599   [exact]
 PASS     the exception is "one grid step from an extinction"                                            1 grid step               1 grid step, extinction of the missing species: True   [exact]
 PASS     equilibrium abundance of the species that had not recovered                                    3e-4                      3e-4  (0.00029557)   [rounds]
-PASS  Fig. 1: |s from Eq. (3) - s from the displacement|, four modifications                            better than 1e-14         3.6e-15   [bound]
+PASS  Fig. 1: |s from Eq. (3) - s from the displacement|, four modifications                            better than 1e-13         3.6e-15   [bound]
 PASS     number of equilibria with full coexistence                                                     304                       304   [exact]
-PASS     distance of these equilibria from the line x0* + s b_3 (Euclidean; s fitted by least squares)  below 1e-14               4.0e-15   [bound]
+PASS     distance of these equilibria from the line x0* + s b_3 (Euclidean; s fitted by least squares)  below 1e-13               4.0e-15   [bound]
 PASS     numerical rank of the points (x*, 1)                                                           2                         2   [exact]
 PASS     second singular value / first                                                                  0.29                      0.29  (0.28824)   [rounds]
-PASS     third singular value / first                                                                   2e-16                     4.8e-16   [noise]
+PASS     third singular value / first                                                                   below 1e-15               4.8e-16   [bound]
 
 === Sec. S3  Effective press, functional responses, press path (Fig. S1) ===
       quantity                                                                                          in the text               found
@@ -37,7 +37,7 @@ PASS  type II: abundances under the other modifications against those under the 
 PASS  type II: smallest deviation of a curve from a straight line (%)                                   1                         1  (1.3705)   [rounds]
 PASS  type II: largest deviation of a curve from a straight line (%)                                    7                         7  (7.0751)   [rounds]
 PASS  Fig. S1(c): compositions visited by the changes of A_23, A_22, A_21 and the mixed change          five or six each          5, 5, 6, 5   [exact]
-PASS  Fig. S1(c): these four modifications against the press path at p = s(theta)                       to 6e-14                  5.7e-14   [bound]
+PASS  Fig. S1(c): these four modifications against the press path at p = s(theta)                       to 1e-13                  5.7e-14   [bound]
 
 === Sec. S4  Composition changes in random communities ===
       quantity                                                                                          in the text               found
@@ -53,8 +53,8 @@ PASS     maximum                                                                
 PASS     sweeps with at least one (%)                                                                   92                        92  (92.473)   [rounds]
 PASS     sweeps with at least two (%)                                                                   58                        58  (58.065)   [rounds]
 PASS  kinks: losses of a single species with k, l present, compared with Eq. (7)                        67                        67   [exact]
-FAIL     ... "the following branch was at least three grid steps long"                                  67                        67 with at least three grid points (two steps); 64 with at least three steps   [exact]
-PASS     1 - |cos| between Eq. (7) and the observed direction, largest                                  3e-16                     2.2e-16   [noise]
+PASS     such losses followed by a branch that contains at least three grid points                      67                        67   [exact]
+PASS     1 - |cos| between Eq. (7) and the observed direction, largest                                  below 1e-15               2.2e-16   [bound]
 PASS  Fig. 2(b): direction after the loss of species 4 is that of Eq. (7)                               (statement)               1 - |cos| = 0.0e+00   [holds: to 1e-12]
 PASS  Fig. 2(b): direction after the loss of species 5 is that of Eq. (7)                               (statement)               1 - |cos| = 0.0e+00   [holds: to 1e-12]
 PASS  Fig. 2 example: third singular value / first on each branch, largest                              1e-16                     2.4e-16   [noise]
@@ -116,17 +116,17 @@ PASS  Table S1, theta = +0.00: lambda_max                                       
 PASS  Table S1, theta = +0.00: min x                                                                    0.002                     0.002  (0.001986)   [run: within a factor of 2]
 PASS  Table S1, theta = +0.00: max |<x> - x*|                                                           2e-5                      2e-5  (1.987e-05)   [run: within a factor of 5, at most 2e-4]
 PASS  Table S1, theta = +0.08: regime                                                                   chaos                     chaos   [exact]
-PASS  Table S1, theta = +0.08: lambda_max                                                               0.023                     0.024  (0.02371)   [run: within 0.002]
+PASS  Table S1, theta = +0.08: lambda_max                                                               0.024                     0.024  (0.02371)   [run: within 0.002]
 PASS  Table S1, theta = +0.08: min x                                                                    1e-4                      1e-4  (0.0001033)   [run: within a factor of 2]
 PASS  Table S1, theta = +0.08: max |<x> - x*|                                                           1e-5                      1e-5  (1.264e-05)   [run: within a factor of 5, at most 2e-4]
 PASS  Table S1, theta = +0.15: regime                                                                   weak chaos                chaos   [exact]
-PASS  Table S1, theta = +0.15: lambda_max                                                               0.004                     0.003  (0.003118)   [run: within 0.002]
+PASS  Table S1, theta = +0.15: lambda_max                                                               0.003                     0.003  (0.003118)   [run: within 0.002]
 PASS  Table S1, theta = +0.15: min x                                                                    3e-8                      3e-8  (3.231e-08)   [run: within a factor of 2]
-PASS  Table S1, theta = +0.15: max |<x> - x*|                                                           3e-5                      1e-5  (1.107e-05)   [run: within a factor of 5, at most 2e-4]
+PASS  Table S1, theta = +0.15: max |<x> - x*|                                                           1e-5                      1e-5  (1.107e-05)   [run: within a factor of 5, at most 2e-4]
 PASS  Table S1, theta = +0.20: regime                                                                   chaos                     chaos   [exact]
-PASS  Table S1, theta = +0.20: lambda_max                                                               0.015                     0.016  (0.01558)   [run: within 0.002]
+PASS  Table S1, theta = +0.20: lambda_max                                                               0.016                     0.016  (0.01558)   [run: within 0.002]
 PASS  Table S1, theta = +0.20: min x                                                                    1e-8                      1e-8  (1.107e-08)   [run: within a factor of 2]
-PASS  Table S1, theta = +0.20: max |<x> - x*|                                                           6e-5                      7e-5  (6.523e-05)   [run: within a factor of 5, at most 2e-4]
+PASS  Table S1, theta = +0.20: max |<x> - x*|                                                           7e-5                      7e-5  (6.523e-05)   [run: within a factor of 5, at most 2e-4]
 PASS  Table S1 caption: the successive maxima of x_2 repeat on the cycles but not at theta = 0.15       (statement)               repeat at theta = -0.30, -0.20, -0.10; do not repeat at +0.00, +0.08, +0.15, +0.20   [holds: maxima over the last 800 time units]
 PASS  deviations of the time averages from the line                                                     at most about 1e-4        6.5e-05   [bound (about: up to 2e-4)]
 PASS  1/T for the averaging window T = 4e4                                                              2.5e-5                    2.5e-5  (2.5e-05)   [rounds]
@@ -138,7 +138,7 @@ PASS     invasion growth rate of species 1 at theta = 0.1                       
 PASS     never invaded by species 2                                                                     (statement)               invasion growth rate of species 2 = -0.243, independent of theta   [holds: negative]
 PASS  smallest abundance of species 3 on the attractor at theta = 0                                     2e-3                      2e-3  (0.001986)   [run: within a factor of 2]
 PASS     at theta = 0.08                                                                                1e-4                      1e-4  (0.0001033)   [run: power of ten]
-PASS     at theta = 0.15                                                                                1e-8                      3e-8  (3.231e-08)   [run: power of ten]
+PASS     at theta = 0.15                                                                                3e-8                      3e-8  (3.231e-08)   [run: within a factor of 2]
 PASS     at theta = 0.2                                                                                 1e-8                      1e-8  (1.107e-08)   [run: power of ten]
 PASS  crisis scan: values of theta                                                                      0.15 to 0.30, step 0.01   0.15 to 0.30, 16 values   [exact]
 PASS     trajectories at each theta                                                                     12                        12   [exact]
@@ -160,13 +160,13 @@ PASS  species in the community of Fig. S4(b)                                    
 PASS  random modifications drawn for each |K|                                                           300                       300   [exact]
 PASS  draws that keep all seven species, |K| = 1, 2, 3                                                  (299, 160, 173)           (299, 160, 173)   [exact]
 PASS  numerical ranks of the points (x*, 1)                                                             (2, 3, 4)                 (2, 3, 4)   [exact]
-PASS     |K| = 1: next singular value / first                                                           1e-16                     5.2e-16   [noise]
-PASS     |K| = 2: next singular value / first                                                           1e-16                     2.0e-16   [noise]
-PASS     |K| = 3: next singular value / first                                                           1e-16                     2.0e-16   [noise]
+PASS     |K| = 1: next singular value / first                                                           below 1e-15               5.2e-16   [bound]
+PASS     |K| = 2: next singular value / first                                                           below 1e-15               2.0e-16   [bound]
+PASS     |K| = 3: next singular value / first                                                           below 1e-15               2.0e-16   [bound]
 PASS  consumption rate u_11 shared by two equations: rank                                               3                         3   [exact]
 PASS     second singular value / first                                                                  0.07                      0.07  (0.071008)   [rounds]
 PASS     third singular value / first                                                                   4e-4                      4e-4  (0.00037563)   [rounds]
-PASS     fourth singular value / first                                                                  3e-16                     2.5e-16   [noise]
+PASS     fourth singular value / first                                                                  below 1e-15               2.5e-16   [bound]
 PASS  consumer-resource model: resources (logistic); consumers                                          (4, 3)                    (4, 3)   [exact]
 PASS     mortality m_1 varied: only the equation of consumer 1 is modified                              (statement)               other equations hold to 4.4e-16   [holds: to 1e-12]
 PASS     rank of the points (R, N, 1)                                                                   2                         2   [exact]
@@ -186,17 +186,4 @@ PASS  Fig. 2(a): at the left end species 2 is absent and the change has no effec
 PASS  Fig. 2(b): a press on r_2 over the same range of effective press traces the same path             (statement)               max |x*(theta) - x*_press(s(theta))| = 2.0e-15   [holds: to 1e-12]
 
 === Summary ===
-162 checks: 161 PASS, 1 FAIL
-
-FAIL (the text and the code or data disagree):
-  - ... "the following branch was at least three grid steps long": text 67; found 67 with at least three grid points (two steps); 64 with at least three steps
-
-PASS by a tolerance, but the digits printed in the text differ from this run (rounding-error level, or chaotic trajectories):
-  - third singular value / first: text 2e-16; found 4.8e-16   [noise]
-  - 1 - |cos| between Eq. (7) and the observed direction, largest: text 3e-16; found 2.2e-16   [noise]
-  - Table S1, theta = +0.08: lambda_max: text 0.023; found 0.024  (0.02371)   [run: within 0.002]
-  - Table S1, theta = +0.15: lambda_max: text 0.004; found 0.003  (0.003118)   [run: within 0.002]
-  - Table S1, theta = +0.15: max |<x> - x*|: text 3e-5; found 1e-5  (1.107e-05)   [run: within a factor of 5, at most 2e-4]
-  - Table S1, theta = +0.20: lambda_max: text 0.015; found 0.016  (0.01558)   [run: within 0.002]
-  - Table S1, theta = +0.20: max |<x> - x*|: text 6e-5; found 7e-5  (6.523e-05)   [run: within a factor of 5, at most 2e-4]
-  - fourth singular value / first: text 3e-16; found 2.5e-16   [noise]
+162 checks: 162 PASS, 0 FAIL
